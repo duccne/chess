@@ -1,61 +1,133 @@
-let currentInput = "";
-const CORRECT_PASS = "123456"; // Thay mật mã của bạn ở đây
+// 1. CẤU HÌNH THÔNG TIN (Bạn sửa ở đây)
+const CORRECT_PASS = "123456"; // Mật mã để mở quà
+const PHOTO_URLS = [
+    "anh1.jpg", 
+    "anh2.jpg", 
+    "anh3.jpg"
+]; // Thay bằng danh sách link ảnh của chị yêu
 
+let currentInput = "";
+
+// 2. CHUYỂN MÀN HÌNH
 function showAuth() {
+    console.log("Mở màn hình nhập mã");
     document.getElementById('gift-screen').classList.add('hidden');
     document.getElementById('auth-screen').classList.remove('hidden');
 }
 
+// 3. LOGIC BÀN PHÍM
 function addNum(num) {
-    if(currentInput.length < 6) {
+    if (currentInput.length < 6) {
         currentInput += num;
-        // Hiệu ứng giả lập nhập mật mã
-        document.querySelector('.heart-pass').innerText = "❤️".repeat(currentInput.length);
+        updatePassDisplay();
     }
 }
 
 function clearNum() {
     currentInput = "";
-    document.querySelector('.heart-pass').innerText = "....";
+    updatePassDisplay();
+}
+
+function updatePassDisplay() {
+    const display = document.querySelector('.heart-pass');
+    if (currentInput.length === 0) {
+        display.innerText = "....";
+    } else {
+        display.innerText = "❤️".repeat(currentInput.length);
+    }
 }
 
 function checkPass() {
-    if(currentInput === CORRECT_PASS) {
-        document.getElementById('status-text').style.display = 'block';
+    if (currentInput === CORRECT_PASS) {
+        // Hiện trạng thái loading giả lập cho giống mẫu
+        const status = document.getElementById('status-text');
+        status.style.display = 'block';
+        
         setTimeout(() => {
             document.getElementById('auth-screen').classList.add('hidden');
             document.getElementById('final-screen').classList.remove('hidden');
-            document.getElementById('bg-music').play();
+            
+            // Chạy nhạc và hiệu ứng
+            const music = document.getElementById('bg-music');
+            if (music) music.play().catch(e => console.log("Cần tương tác để phát nhạc"));
+            
             startSurprise();
-        }, 1500);
+        }, 1200);
     } else {
         alert("Sai mật mã rồi chị ơi! 😜");
         clearNum();
     }
 }
 
+// 4. CÁC HIỆU ỨNG SAU KHI NHẬP ĐÚNG
 function startSurprise() {
-    setInterval(createHeartFly, 300); // Tạo trái tim bay
-    setInterval(createFirework, 500);
-    setInterval(createDenseWishes, 400); 
-    setInterval(createScrollingPhoto, 2500);
+    setInterval(createHeartFly, 300);   // Trái tim bay từ dưới lên
+    setInterval(createFirework, 600);   // Pháo hoa
+    setInterval(createDenseWishes, 500); // Lời chúc bay ngang
+    setInterval(createScrollingPhoto, 3000); // Ảnh chạy dọc
 }
 
+// Hiệu ứng trái tim bay (Giống mẫu hồng pastel)
 function createHeartFly() {
     const heart = document.createElement('div');
     heart.className = 'heart-fly';
     heart.innerHTML = '❤️';
     heart.style.left = Math.random() * 100 + 'vw';
     heart.style.bottom = '-20px';
-    heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+    heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
     document.body.appendChild(heart);
 
     heart.animate([
-        { bottom: '-20px', opacity: 1, transform: 'translateX(0)' },
-        { bottom: '110vh', opacity: 0, transform: `translateX(${Math.random() * 100 - 50}px)` }
-    ], { duration: 4000 + Math.random() * 2000 });
-    
+        { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+        { transform: `translateY(-110vh) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+    ], { duration: 4000 + Math.random() * 3000 });
+
     setTimeout(() => heart.remove(), 6000);
 }
 
-// ... (Giữ các hàm createFirework, createDenseWishes, createScrollingPhoto từ bản trước của bạn)
+// Pháo hoa rực rỡ
+function createFirework() {
+    const firework = document.createElement('div');
+    firework.className = 'flower'; 
+    firework.innerHTML = '✨';
+    firework.style.left = Math.random() * 100 + 'vw';
+    firework.style.top = Math.random() * 100 + 'vh';
+    firework.style.color = ['#ff4081', '#ffeb3b', '#00e676', '#29b6f6'][Math.floor(Math.random() * 4)];
+    document.body.appendChild(firework);
+    setTimeout(() => firework.remove(), 1000);
+}
+
+// Lời chúc ngẫu nhiên
+function createDenseWishes() {
+    const wishes = ["Chúc chị luôn xinh đẹp!", "Mãi hạnh phúc nhé!", "Tuổi mới rạng rỡ!", "Yêu chị rất nhiều! ❤️", "Luôn cười tươi nha!"];
+    const wish = document.createElement('div');
+    wish.className = 'floating-wish';
+    wish.innerText = wishes[Math.floor(Math.random() * wishes.length)];
+    wish.style.top = Math.random() * 80 + 10 + 'vh';
+    wish.style.left = '-200px';
+    document.body.appendChild(wish);
+
+    wish.animate([
+        { left: '-200px' },
+        { left: '110vw' }
+    ], { duration: 6000 + Math.random() * 4000 });
+
+    setTimeout(() => wish.remove(), 10000);
+}
+
+// Ảnh chạy dọc (Scrolling Photo)
+function createScrollingPhoto() {
+    const img = document.createElement('img');
+    img.className = 'scrolling-photo';
+    img.src = PHOTO_URLS[Math.floor(Math.random() * PHOTO_URLS.length)];
+    img.style.left = Math.random() * 80 + 10 + 'vw';
+    img.style.top = '110vh';
+    document.body.appendChild(img);
+
+    img.animate([
+        { top: '110vh' },
+        { top: '-20vh' }
+    ], { duration: 8000 });
+
+    setTimeout(() => img.remove(), 8500);
+}
