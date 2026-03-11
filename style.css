@@ -8,7 +8,8 @@
 body {
     margin: 0; padding: 0;
     width: 100vw; height: 100vh;
-    background: #0f0f0f; /* Nền đen sâu để pháo hoa đẹp hơn */
+    /* Thay đổi dòng này */
+    background: radial-gradient(circle, #2c022c 0%, #000000 100%);
     color: white;
     font-family: 'Montserrat', sans-serif;
     display: flex; justify-content: center; align-items: center;
