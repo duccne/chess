@@ -20,19 +20,22 @@ body {
 
 /* Màn hình nhập mã sang trọng */
 .auth-box {
-    background: rgba(255, 255, 255, 0.98);
+    /* Thêm phông nền nhẹ cho khung nhập mã */
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--gold);
+    backdrop-filter: blur(10px); /* Hiệu ứng kính mờ hiện đại */
     padding: 40px 25px;
     border-radius: 25px;
     color: #333;
     width: 80%; max-width: 350px;
     text-align: center;
-    box-shadow: 0 0 40px rgba(255, 77, 77, 0.4);
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
 }
 
 .auth-box h3 {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Dancing Script', cursive; /* Chữ viết tay mềm mại */
     font-size: 2.2rem;
-    color: var(--primary);
+    color: #c2185b; /* Màu hồng đậm quý phái */
     margin-bottom: 25px;
 }
 
