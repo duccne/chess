@@ -1,141 +1,84 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap');
 
-:root {
-    --gift-red: #ff4d4d; /* Màu đỏ của hộp quà */
-    --ribbon-gold: #ffd700; /* Màu vàng của nơ */
-    --dark-bg: #1a1a1a;
-}
-
 body {
     margin: 0; padding: 0;
     width: 100vw; height: 100vh;
-    /* Phông nền Gradient Huyền Bí (Sâu & Sang) */
-    background: radial-gradient(circle, #2a022a 0%, #000000 100%);
-    color: white;
-    font-family: 'Montserrat', sans-serif;
+    background: #ffc0cb; /* Nền hồng lãng mạn */
     display: flex; justify-content: center; align-items: center;
-    overflow: hidden;
+    overflow: hidden; font-family: 'Montserrat', sans-serif;
 }
 
 .hidden { display: none !important; }
 
-/* CĂN GIỮ TUYỆT ĐỐI */
-#gift-screen, #auth-screen, #final-screen {
-    position: absolute;
-    width: 100%; height: 100%;
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
+/* Thẻ màu trắng bo góc */
+.pink-card {
+    background: rgba(255, 255, 255, 0.9);
+    width: 90%; max-width: 350px;
+    padding: 30px 20px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     text-align: center;
-    padding: 20px; box-sizing: border-box;
-}
-
-/* HỘP QUÀ THEO ẢNH MẪU 🎁 */
-.gift-box {
-    width: 140px; height: 110px;
-    background: var(--gift-red);
     position: relative;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    animation: shake 1.5s infinite;
-    transform-origin: bottom center;
 }
 
-.gift-box:hover {
-    transform: scale(1.1); /* Lơ lửng khi chạm vào */
+/* Ảnh đại diện tròn */
+.avatar-container {
+    width: 100px; height: 100px;
+    margin: -80px auto 20px auto;
+    border-radius: 50%;
+    border: 5px solid white;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
+.avatar { width: 100%; height: 100%; object-fit: cover; }
 
-/* Nắp hộp quà */
-.gift-lid {
-    width: 160px; height: 35px;
-    background: var(--gift-red);
-    position: absolute; top: -35px; left: -10px;
-    border-radius: 5px 5px 0 0;
-    box-shadow: 0 4px 5px rgba(0,0,0,0.2);
-    z-index: 5;
-}
-
-/* Nơ lồng 2 trái tim vàng (Vẽ bằng CSS) */
-.gift-bow {
-    position: absolute; top: -60px; left: 50%;
-    transform: translateX(-50%); width: 70px; height: 35px; z-index: 10;
-}
-
-.gift-bow::before, .gift-bow::after {
-    content: ''; position: absolute;
-    width: 35px; height: 35px;
-    border: 5px solid var(--ribbon-gold);
-    border-radius: 50% 50% 0 50%;
-    transform: rotate(45deg);
-    left: 0;
-}
-
-.gift-bow::after {
-    left: 30px; border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg);
-}
-
-/* Ruy băng vàng dọc khớp với nơ */
-.gift-body::after, .gift-lid::after {
-    content: ''; position: absolute;
-    background: var(--ribbon-gold);
-    width: 28px; height: 100%;
-    left: 50%; transform: translateX(-50%);
-}
-
-.hint {
-    margin-top: 30px;
-    font-size: 1.1rem; color: #ffeb3b;
-    font-weight: 600; text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-    line-height: 1.6;
-}
-
-/* MÀN HÌNH NHẬP MẬT MÃ (Cập nhật Phông Chữ) */
-.auth-box {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 40px 25px;
-    border-radius: 25px;
-    color: #333; width: 85%; max-width: 350px;
-    box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
-    border: 2px solid var(--ribbon-gold);
-}
-
-.auth-box h3 {
-    font-family: 'Dancing Script', cursive; /* Phông chữ viết tay */
-    font-size: 2.2rem; color: #c2185b; /* Màu hồng đậm lãng mạn */
-    margin-bottom: 25px;
-}
-
-input {
-    width: 100%; padding: 14px; margin-bottom: 20px;
-    border: 2px solid #ffcccc; border-radius: 50px;
-    text-align: center; font-size: 1rem; outline: none;
-}
-
-button {
-    width: 100%; padding: 14px;
-    background: var(--gift-red); color: white; border: none;
-    border-radius: 50px; font-weight: 600; cursor: pointer;
-}
-
-/* HIỆU ỨNG CHỮ CHẠY & ẢNH */
-.main-title {
+.title-love {
     font-family: 'Dancing Script', cursive;
-    font-size: 2.8rem; color: var(--ribbon-gold);
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-    z-index: 100;
+    color: #d81b60; font-size: 1.5rem;
 }
 
-.floating-wish {
-    position: absolute; white-space: nowrap;
-    font-weight: bold; font-size: 1.5rem; color: #ffeb3b;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-    z-index: 60; pointer-events: none;
+/* Ô hiển thị mật mã */
+.pass-display {
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 15px 0;
+    font-size: 1.2rem;
 }
 
-.scrolling-photo {
-    position: absolute; width: 120px; height: 120px;
-    border-radius: 50%; border: 3px solid var(--ribbon-gold);
-    object-fit: cover; z-index: 50; pointer-events: none;
+.hint-text { color: #f06292; font-weight: bold; font-size: 0.9rem; }
+
+/* Bàn phím số */
+.pink-keypad {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 10px; margin-top: 20px;
 }
 
-@keyframes shake { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05) rotate(2deg); } }
+.pink-keypad button {
+    background: #ff80ab;
+    color: white; border: none;
+    padding: 15px; border-radius: 12px;
+    font-size: 1.2rem; font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.pink-keypad button:active { transform: scale(0.9); background: #f06292; }
+.btn-c { background: #f48fb1 !important; }
+.btn-ok { background: #ec407a !important; }
+
+#status-text {
+    margin-top: 15px; color: #ad1457;
+    font-size: 0.85rem; display: none;
+}
+
+/* --- Hiệu ứng Trái tim bay (Dành cho trang chính) --- */
+.heart-fly {
+    position: absolute; color: #ff4081;
+    pointer-events: none; z-index: 100;
+}
+
+/* Giữ nguyên CSS hộp quà và tiêu đề từ bản trước của bạn */
+.gift-box { width: 120px; height: 100px; background: #ff4d4d; position: relative; animation: shake 1.5s infinite; }
+.gift-lid { width: 140px; height: 30px; background: #ff4d4d; position: absolute; top: -30px; left: -10px; }
+.main-title { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #d81b60; text-align: center; }
