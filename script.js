@@ -19,14 +19,53 @@ function checkUnlock() {
 }
 
 function startSurprise() {
-    // 1. Tạo hoa hồng rơi từ trên xuống
+    // 1. Hoa rơi (Giữ nguyên)
     setInterval(createFlower, 300);
 
-    // 2. Tạo pháo hoa nổ liên tục
-    setInterval(createFirework, 600);
+    // 2. Pháo hoa (Giữ nguyên)
+    setInterval(createFirework, 500);
 
-    // 3. Ảnh chị ấy chạy dọc từ dưới lên trên
-    setInterval(createScrollingPhoto, 2500);
+    // 3. Ảnh chạy dọc (Giữ nguyên)
+    setInterval(createScrollingPhoto, 2000);
+
+    // 4. LỜI CHÚC DÀY ĐẶC CHẠY QUANH MÀN HÌNH
+    // Cứ mỗi 400ms (0.4 giây) sẽ hiện 1 câu chúc mới -> Rất dày
+    setInterval(createDenseWishes, 400); 
+}
+function createDenseWishes() {
+    const wishes = [
+        "Chúc chị luôn xinh đẹp! 🌸", "Yêu chị nhất trên đời! ❤️", 
+        "Hạnh phúc nha chị yêu! ✨", "Mãi rạng rỡ như thế này nhé! 🥰",
+        "Happy Birthday My Queen! 👑", "Em luôn ở đây bên chị! 🌹",
+        "Chị là điều tuyệt vời nhất! 💖", "Tuổi mới thật rực rỡ nhé! 🌟",
+        "Love You Forever! 👩‍❤️‍💋‍👨", "Cảm ơn chị đã đến! 💐"
+    ];
+
+    const colors = ['#ffeb3b', '#ff4081', '#00e676', '#00e5ff', '#ffffffff', '#ff9100'];
+    
+    const div = document.createElement('div');
+    div.className = 'floating-wish';
+    div.innerText = wishes[Math.floor(Math.random() * wishes.length)];
+    
+    // Cài đặt vị trí và kiểu dáng ngẫu nhiên
+    div.style.top = Math.random() * 90 + 5 + 'vh'; // Chạy khắp từ trên xuống dưới
+    div.style.left = '-300px'; 
+    div.style.color = colors[Math.floor(Math.random() * colors.length)];
+    div.style.fontSize = Math.random() * 1 + 1.2 + 'rem'; // Kích thước to nhỏ khác nhau
+    div.style.opacity = Math.random() * 0.5 + 0.5; // Độ đậm nhạt khác nhau
+    
+    document.body.appendChild(div);
+
+    // Tốc độ bay ngẫu nhiên (từ 4 đến 8 giây) để tạo sự đan xen
+    const duration = 4000 + Math.random() * 4000;
+
+    div.animate([
+        { left: '-300px' },
+        { left: '110vw' }
+    ], {
+        duration: duration,
+        easing: 'linear'
+    }).onfinish = () => div.remove();
 }
 
 function createFlower() {
