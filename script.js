@@ -1,70 +1,83 @@
-const messages = [
-    "Chị là người phụ nữ tuyệt vời nhất em từng gặp! ❤️",
-    "Tuổi mới chúc chị luôn xinh đẹp, hạnh phúc và thành công.",
-    "Cảm ơn chị đã luôn ở bên cạnh và chiều chuộng em. 🥰",
-    "Hôm nay chị hãy cứ làm công chúa, còn lại để em lo!",
-    "Yêu chị nhiều hơn tất cả những gì em có thể nói! 🌹"
-];
+const CORRECT_PASSWORD = "123"; // <-- THAY MẬT MÃ CỦA BẠN VÀO ĐÂY
 
-let messageIndex = 0;
-
-function nextMessage() {
-    const msgElement = document.getElementById('message');
-    msgElement.style.opacity = 0;
-    
-    setTimeout(() => {
-        messageIndex = (messageIndex + 1) % messages.length;
-        msgElement.innerText = messages[messageIndex];
-        msgElement.style.opacity = 1;
-        createFirework(); // Mỗi lần bấm nút sẽ nổ pháo hoa
-    }, 300);
+function showPasswordInput() {
+    document.getElementById('gift-container').classList.add('hidden');
+    document.getElementById('password-screen').classList.remove('hidden');
 }
 
-// Tạo hiệu ứng hạt bay (Tim, Sao, Hoa)
-function createParticle(x, y) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    const shapes = ['❤️', '✨', '🌸', '💖'];
-    particle.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
-    
-    particle.style.left = x + 'px';
-    particle.style.top = y + 'px';
-    particle.style.fontSize = Math.random() * 20 + 10 + 'px';
-    
-    const destinationX = (Math.random() - 0.5) * 300;
-    const destinationY = (Math.random() - 0.5) * 300;
-    
-    document.body.appendChild(particle);
-    
-    particle.animate([
-        { transform: 'translate(0, 0)', opacity: 1 },
-        { transform: `translate(${destinationX}px, ${destinationY}px)`, opacity: 0 }
-    ], {
-        duration: 1000 + Math.random() * 1000,
-        easing: 'cubic-bezier(0, .9, .57, 1)'
-    }).onfinish = () => particle.remove();
-}
-
-function createFirework() {
-    for (let i = 0; i < 20; i++) {
-        createParticle(window.innerWidth / 2, window.innerHeight / 2);
+function checkPassword() {
+    const input = document.getElementById('password-input').value;
+    if (input === CORRECT_PASSWORD) {
+        startCelebration();
+    } else {
+        document.getElementById('error-msg').classList.remove('hidden');
     }
 }
 
-// Mưa tim tự động
-setInterval(() => {
-    const x = Math.random() * window.innerWidth;
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.innerHTML = '❤️';
-    particle.style.left = x + 'px';
-    particle.style.top = '-20px';
-    document.body.appendChild(particle);
+function startCelebration() {
+    document.getElementById('password-screen').classList.add('hidden');
+    document.getElementById('final-screen').classList.remove('hidden');
     
-    particle.animate([
-        { transform: 'translateY(0)', opacity: 1 },
-        { transform: `translateY(${window.innerHeight}px)`, opacity: 0 }
+    // 1. Tạo pháo hoa (giả lập đơn giản)
+    setInterval(createFirework, 500);
+    
+    // 2. Tạo lời chúc chạy quanh màn hình
+    const wishes = [
+        "Chúc chị mãi xinh đẹp! 🌸",
+        "Yêu chị nhất trên đời! ❤️",
+        "Tuổi mới rực rỡ nhé chị yêu! ✨",
+        "Hạnh phúc bên em mãi nhé! 🥰",
+        "Món quà lớn nhất của em là chị! 🎁"
+    ];
+
+    setInterval(() => {
+        const wish = wishes[Math.floor(Math.random() * wishes.length)];
+        createFloatingText(wish);
+    }, 800);
+}
+
+function createFloatingText(text) {
+    const div = document.createElement('div');
+    div.className = 'floating-wish';
+    div.innerText = text;
+    div.style.top = Math.random() * 80 + 10 + 'vh';
+    div.style.left = '-200px';
+    document.body.appendChild(div);
+
+    const duration = 5000 + Math.random() * 3000;
+    div.animate([
+        { left: '-250px' },
+        { left: '110vw' }
     ], {
-        duration: 3000 + Math.random() * 2000
-    }).onfinish = () => particle.remove();
-}, 500);
+        duration: duration,
+        easing: 'linear'
+    }).onfinish = () => div.remove();
+}
+
+function createFirework() {
+    const colors = ['#ff0000', '#00ff00', '#ffff00', '#ff00ff', '#ffffff'];
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * (window.innerHeight / 2);
+    
+    for (let i = 0; i < 15; i++) {
+        const p = document.createElement('div');
+        p.style.position = 'absolute';
+        p.style.width = '5px';
+        p.style.height = '5px';
+        p.style.background = colors[Math.floor(Math.random() * colors.length)];
+        p.style.left = x + 'px';
+        p.style.top = y + 'px';
+        document.body.appendChild(p);
+
+        const angle = (Math.PI * 2 / 15) * i;
+        const velocity = 50 + Math.random() * 50;
+        
+        p.animate([
+            { transform: 'translate(0, 0)', opacity: 1 },
+            { transform: `translate(${Math.cos(angle) * velocity}px, ${Math.sin(angle) * velocity}px)`, opacity: 0 }
+        ], {
+            duration: 1000,
+            easing: 'ease-out'
+        }).onfinish = () => p.remove();
+    }
+}
