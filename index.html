@@ -3,36 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Quà Tặng Chị ❤️</title>
+    <title>Gửi Chị Yêu ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <audio id="bg-music" loop>
-        <source src="link-nhac-cua-ban.mp3" type="audio/mpeg">
+        <source src="link-nhac.mp3" type="audio/mpeg">
     </audio>
 
     <div id="gift-screen">
-        <div class="gift-box" onclick="goToAuth()">
+        <div class="gift-box" onclick="showAuth()">
             <div class="gift-bow"></div>
             <div class="gift-lid"></div>
             <div class="gift-body"></div>
         </div>
-        <p class="hint">Bấm vào hộp quà để khám phá bí mật... 🎁</p>
+        <p class="hint">Bấm vào hộp quà nhé! 🎁</p>
     </div>
 
     <div id="auth-screen" class="hidden">
-        <div class="auth-box">
-            <h3>Mật mã yêu thương</h3>
-            <input type="password" id="password-input" placeholder="Nhập mã vào đây chị nhé...">
-            <button onclick="checkUnlock()">Mở Quà</button>
-            <p id="error-msg" class="hidden">Mã này chưa đúng rồi! 😜</p>
+        <div class="pink-card">
+            <div class="avatar-container">
+                <img src="anh-chi.jpg" alt="Chị yêu" class="avatar">
+            </div>
+            <h2 class="title-love">Nhập mật mã để mở quà nào 💕</h2>
+            
+            <div class="pass-display">
+                <div class="heart-pass">❤️❤️❤️❤️</div>
+            </div>
+            
+            <p class="hint-text">Gợi ý: Sinh nhật em🤫</p>
+
+            <div class="pink-keypad">
+                <button onclick="addNum('1')">1</button>
+                <button onclick="addNum('2')">2</button>
+                <button onclick="addNum('3')">3</button>
+                <button onclick="addNum('4')">4</button>
+                <button onclick="addNum('5')">5</button>
+                <button onclick="addNum('6')">6</button>
+                <button onclick="addNum('7')">7</button>
+                <button onclick="addNum('8')">8</button>
+                <button onclick="addNum('9')">9</button>
+                <button onclick="clearNum()" class="btn-c">C</button>
+                <button onclick="addNum('0')">0</button>
+                <button onclick="checkPass()" class="btn-ok">OK</button>
+            </div>
+            <p id="status-text">Đã xác nhận! Loading Tình Yêu... ❤️</p>
         </div>
     </div>
 
     <div id="final-screen" class="hidden">
-        <div class="main-content">
-            <h1 class="main-title">HAPPY BIRTHDAY CHỊ YÊU! 🎂</h1>
-        </div>
+        <h1 class="main-title">HAPPY BIRTHDAY CHỊ YÊU! 🎂</h1>
     </div>
 
     <script src="script.js"></script>
