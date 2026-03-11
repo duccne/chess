@@ -102,3 +102,86 @@ button {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.05) rotate(2deg); }
 }
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap');
+
+:root {
+    --primary: #ff4d4d;
+    --gold: #ffd700;
+    --dark-bg: #1a1a1a;
+}
+
+body {
+    margin: 0; padding: 0;
+    width: 100vw; height: 100vh;
+    background: var(--dark-bg);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    display: flex; justify-content: center; align-items: center;
+    overflow: hidden;
+}
+
+.hidden { display: none !important; }
+
+/* Phông nền nhập mật mã */
+.auth-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 20px;
+    border-radius: 20px;
+    color: #333;
+    width: 85%; max-width: 350px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(255, 77, 77, 0.3);
+}
+
+.auth-box h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%; padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #ffcccc;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 1rem;
+    outline: none;
+}
+
+button {
+    width: 100%; padding: 12px;
+    background: var(--primary);
+    color: white; border: none;
+    border-radius: 50px;
+    font-weight: 600; cursor: pointer;
+}
+
+/* Ảnh của chị ấy chạy dọc màn hình */
+.scrolling-photo {
+    position: absolute;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    object-fit: cover;
+    z-index: 50;
+    pointer-events: none;
+}
+
+/* Tiêu đề chính sau khi mở quà */
+.main-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: var(--gold);
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    z-index: 100;
+}
+
+/* Hoa rơi */
+.flower {
+    position: absolute;
+    top: -20px;
+    z-index: 40;
+    pointer-events: none;
+}
