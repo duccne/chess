@@ -1,5 +1,5 @@
 // 1. CẤU HÌNH THÔNG TIN (Bạn sửa ở đây)
-const CORRECT_PASS = "123456"; // Mật mã để mở quà
+const CORRECT_PASS = "1503"; // Mật mã để mở quà
 const PHOTO_URLS = [
     "anh1.jpg", 
     "anh2.jpg", 
