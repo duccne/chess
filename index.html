@@ -8,7 +8,7 @@
 </head>
 <body>
     <audio id="bg-music" loop>
-        <source src="link-nhac.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
     <div id="gift-screen">
@@ -17,7 +17,7 @@
             <div class="gift-lid"></div>
             <div class="gift-body"></div>
         </div>
-        <p class="hint">Bấm vào hộp quà nhé! 🎁</p>
+        <p class="hint">Chị ơi, có món quà nhỏ cho chị này... 🎁<br>(Bấm vào hộp quà nhé!)</p>
     </div>
 
     <div id="auth-screen" class="hidden">
@@ -25,13 +25,14 @@
             <div class="avatar-container">
                 <img src="anh-chi.jpg" alt="Chị yêu" class="avatar">
             </div>
+            
             <h2 class="title-love">Nhập mật mã để mở quà nào 💕</h2>
             
             <div class="pass-display">
-                <div class="heart-pass">❤️❤️❤️❤️</div>
+                <div class="heart-pass">....</div>
             </div>
             
-            <p class="hint-text">Gợi ý: Sinh nhật em🤫</p>
+            <p class="hint-text">Gợi ý: Ngày sinh nhật em 🤫</p>
 
             <div class="pink-keypad">
                 <button onclick="addNum('1')">1</button>
@@ -43,16 +44,20 @@
                 <button onclick="addNum('7')">7</button>
                 <button onclick="addNum('8')">8</button>
                 <button onclick="addNum('9')">9</button>
+                
                 <button onclick="clearNum()" class="btn-c">C</button>
                 <button onclick="addNum('0')">0</button>
                 <button onclick="checkPass()" class="btn-ok">OK</button>
             </div>
-            <p id="status-text">Đã xác nhận! Loading Tình Yêu... ❤️</p>
+            
+            <p id="status-text" class="hidden">Đã xác nhận! Loading Tình Yêu... ❤️</p>
         </div>
     </div>
 
     <div id="final-screen" class="hidden">
-        <h1 class="main-title">HAPPY BIRTHDAY CHỊ YÊU! 🎂</h1>
+        <div class="main-content">
+            <h1 class="main-title">HAPPY BIRTHDAY CHỊ YÊU! 🎂</h1>
+            </div>
     </div>
 
     <script src="script.js"></script>
