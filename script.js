@@ -39,18 +39,19 @@ function updatePassDisplay() {
 
 function checkPass() {
     if (currentInput === CORRECT_PASS) {
-        // Hiện trạng thái loading giả lập cho giống mẫu
         const status = document.getElementById('status-text');
         status.style.display = 'block';
+        
+        // Phát nhạc ngay khi nhấn OK thành công
+        const music = document.getElementById('bg-music');
+        if (music) {
+            music.currentTime = 0; // Chạy từ đầu đoạn nhạc
+            music.play().catch(e => console.log("Lỗi phát nhạc:", e));
+        }
         
         setTimeout(() => {
             document.getElementById('auth-screen').classList.add('hidden');
             document.getElementById('final-screen').classList.remove('hidden');
-            
-            // Chạy nhạc và hiệu ứng
-            const music = document.getElementById('bg-music');
-            if (music) music.play().catch(e => console.log("Cần tương tác để phát nhạc"));
-            
             startSurprise();
         }, 1200);
     } else {
