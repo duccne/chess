@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<audio id="bg-music" loop>
-    <source src="nhac.m4a" type="audio/mp4">
-    Trình duyệt của bạn không hỗ trợ phát âm thanh.
-</audio>
+    <audio id="bg-music" loop>
+        <source src="nhac.m4a" type="audio/mp4">
+    </audio>
 
     <div id="gift-screen">
         <div class="gift-box" onclick="showAuth()">
@@ -24,48 +23,47 @@
     <div id="auth-screen" class="hidden">
         <div class="pink-card">
             <div class="avatar-container">
-                <img src="n.jpg" alt="Chị yêu" class="avatar">
+                <img src="anh-chi.jpg" alt="Chị yêu" class="avatar">
             </div>
             
             <h2 class="title-love">Nhập mật mã để mở quà nào 💕</h2>
             
-  <div class="pass-display">
-    <div class="dots-4">
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-    </div>
-</div>
-
-<div class="pink-keypad">
-    <button onclick="addNum('1')">1</button>
-    <button onclick="addNum('2')">2</button>
-    <button onclick="addNum('3')">3</button>
-    <button onclick="addNum('4')">4</button>
-    <button onclick="addNum('5')">5</button>
-    <button onclick="addNum('6')">6</button>
-    <button onclick="addNum('7')">7</button>
-    <button onclick="addNum('8')">8</button>
-    <button onclick="addNum('9')">9</button>
-    <button onclick="clearNum()" class="btn-c">C</button>
-    <button onclick="addNum('0')">0</button>
-    <button class="btn-disabled" disabled>❤️</button>
-</div>
-
-<audio id="bg-music" loop>
-    <source src="20260311_212016989.m4a" type="audio/mp4">
-</audio>
+            <div class="dots-4">
+                <div class="dot-item"></div>
+                <div class="dot-item"></div>
+                <div class="dot-item"></div>
+                <div class="dot-item"></div>
+            </div>
             
-            <p id="status-text" class="hidden">Đã xác nhận! Loading Tình Yêu... ❤️</p>
+            <p class="hint-text" style="color: #f06292; font-size: 0.9rem; margin-bottom: 15px;">
+                Gợi ý: Sinh nhật em 🤫
+            </p>
+
+            <div class="pink-keypad">
+                <button onclick="addNum('1')">1</button>
+                <button onclick="addNum('2')">2</button>
+                <button onclick="addNum('3')">3</button>
+                <button onclick="addNum('4')">4</button>
+                <button onclick="addNum('5')">5</button>
+                <button onclick="addNum('6')">6</button>
+                <button onclick="addNum('7')">7</button>
+                <button onclick="addNum('8')">8</button>
+                <button onclick="addNum('9')">9</button>
+                
+                <button onclick="clearNum()" class="btn-c">C</button>
+                <button onclick="addNum('0')">0</button>
+                <button class="btn-empty" disabled>❤️</button>
+            </div>
+            
+            <p id="status-text" class="hidden" style="margin-top: 15px; color: #d81b60; font-weight: 600;">
+                Đã xác nhận! Loading Tình Yêu... ❤️
+            </p>
         </div>
     </div>
 
     <div id="final-screen" class="hidden">
-        <div class="main-content">
-            <h1 class="main-title">HAPPY BIRTHDAY CHỊ YÊU! 🎂</h1>
-            </div>
-    </div>
+        <h1 class="main-title">HAPPY BIRTHDAY CHỊ YÊU! 🎂</h1>
+        </div>
 
     <script src="script.js"></script>
 </body>
