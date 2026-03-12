@@ -150,6 +150,31 @@ body {
     object-fit: cover;
 }
 
+.dots-4 {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.dot-item {
+    width: 15px;
+    height: 15px;
+    border: 2px solid #ff80ab;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.dot-item.active {
+    background: #ff80ab; /* Hiện màu hồng khi có số */
+    transform: scale(1.2);
+}
+
+.btn-disabled {
+    background: #fce4ec !important;
+    color: #f06292 !important;
+    cursor: default;
+}
 @keyframes shake {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.05) rotate(2deg); }
