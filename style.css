@@ -177,29 +177,36 @@ body {
     transform: translateY(-5px); /* Hiệu ứng nảy lên khi nhập */
 }
 
-/* Bàn phím - Hình chữ nhật bo góc */
-.pink-keypad {
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px; 
-    margin-top: 20px;
+/* Đảm bảo thẻ chứa bàn phím có quyền ưu tiên cao nhất */
+.pink-card {
+    position: relative;
+    z-index: 1000; /* Nằm trên tất cả các hiệu ứng bay */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px 15px;
+    pointer-events: auto; /* Cho phép tương tác */
 }
 
+/* Các nút bấm hình chữ nhật bo góc */
 .pink-keypad button {
-    background: var(--pink-main);
-    color: white; 
+    position: relative;
+    z-index: 1001;
+    pointer-events: auto; /* Đảm bảo bấm được */
+    background: #ff80ab;
+    color: white;
     border: none;
-    padding: 20px; 
-    border-radius: 15px; /* Bo góc hình chữ nhật */
-    font-size: 1.4rem; 
+    padding: 20px;
+    border-radius: 12px; /* Hình chữ nhật bo góc */
+    font-size: 1.4rem;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.2s;
+    touch-action: manipulation; /* Tối ưu cho cảm ứng điện thoại */
 }
 
-.pink-keypad button:active { 
-    background: var(--pink-dark); 
-    transform: scale(0.95); 
+/* Vô hiệu hóa tương tác của các hiệu ứng để không chặn nút bấm */
+.heart-fly, .floating-wish, .scrolling-photo, .flower {
+    pointer-events: none !important;
+    z-index: 1;
 }
 
 /* Hiệu ứng chữ chạy không bị dồn hàng dọc */
