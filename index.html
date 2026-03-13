@@ -2,68 +2,43 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gửi Chị Yêu ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cờ Vua AI & 3D Web</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <audio id="bg-music" loop>
-        <source src="nhac.m4a" type="audio/mp4">
-    </audio>
+<body class="theme-wood">
 
-    <div id="gift-screen">
-        <div class="gift-box" onclick="showAuth()">
-            <div class="gift-bow"></div>
-            <div class="gift-lid"></div>
-            <div class="gift-body"></div>
-        </div>
-        <p class="hint">Chị ơi, có món quà nhỏ cho chị này... 🎁<br>(Bấm vào hộp quà nhé!)</p>
+    <h2>Cờ Vua Đánh Với Máy (AI)</h2>
+    
+    <div class="controls">
+        <select id="difficulty">
+            <option value="1">Độ khó: Tập sự (Dễ)</option>
+            <option value="5" selected>Độ khó: Nghiệp dư (Vừa)</option>
+            <option value="10">Độ khó: Chuyên nghiệp (Khó)</option>
+            <option value="15">Độ khó: Kiện tướng (Rất Khó)</option>
+        </select>
+
+        <select id="theme">
+            <option value="theme-wood">Bàn cờ: Gỗ truyền thống</option>
+            <option value="theme-blue">Bàn cờ: Xanh Bạc hiện đại</option>
+        </select>
+
+        <button id="toggle-3d">Bật/Tắt Góc Nhìn 3D</button>
+        <button id="reset-btn">Chơi Lại</button>
     </div>
-
-    <div id="auth-screen" class="hidden">
-        <div class="pink-card">
-            <div class="avatar-container">
-                <img src="anh-chi.jpg" alt="Chị yêu" class="avatar">
-            </div>
-            
-            <h2 class="title-love">Nhập mật mã để mở quà nào 💕</h2>
-            
-            <div class="dots-4">
-                <div class="dot-item"></div>
-                <div class="dot-item"></div>
-                <div class="dot-item"></div>
-                <div class="dot-item"></div>
-            </div>
-            
-            <p class="hint-text" style="color: #f06292; font-size: 0.9rem; margin-bottom: 15px;">
-                Gợi ý: Sinh nhật em 🤫
-            </p>
-
-            <div class="pink-keypad">
-                <button onclick="addNum('1')">1</button>
-                <button onclick="addNum('2')">2</button>
-                <button onclick="addNum('3')">3</button>
-                <button onclick="addNum('4')">4</button>
-                <button onclick="addNum('5')">5</button>
-                <button onclick="addNum('6')">6</button>
-                <button onclick="addNum('7')">7</button>
-                <button onclick="addNum('8')">8</button>
-                <button onclick="addNum('9')">9</button>
-                
-                <button onclick="clearNum()" class="btn-c">C</button>
-                <button onclick="addNum('0')">0</button>
-                <button class="btn-empty" disabled>❤️</button>
-            </div>
-            
-            <p id="status-text" class="hidden" style="margin-top: 15px; color: #d81b60; font-weight: 600;">
-                Đã xác nhận! Loading Tình Yêu... ❤️
-            </p>
-        </div>
+    
+    <div id="board-container">
+        <div id="board" class="mode-3d"></div>
     </div>
+    
+    <div id="status">Lượt của bạn (Trắng)</div>
 
-    <div id="final-screen" class="hidden">
-        <h1 class="main-title">HAPPY BIRTHDAY CHỊ YÊU! 🎂</h1>
-        </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
 
     <script src="script.js"></script>
 </body>
