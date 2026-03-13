@@ -121,3 +121,53 @@ $(document).ready(function() {
         $('body').removeClass('theme-wood theme-blue').addClass($(this).val());
     });
 });
+/* Dàn hàng ngang cho bàn cờ và bảng lịch sử */
+.game-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Giao diện bảng lịch sử */
+.history-panel {
+    background: #34495e;
+    padding: 15px;
+    border-radius: 8px;
+    width: 250px;
+    height: 450px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.history-panel h3 {
+    margin-top: 0;
+    text-align: center;
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 10px;
+}
+
+#move-history {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto; /* Cho phép cuộn khi lịch sử dài */
+    flex-grow: 1;
+}
+
+#move-history li {
+    padding: 8px;
+    border-bottom: 1px solid #2c3e50;
+    font-family: monospace;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+#move-history li span.move-num { color: #95a5a6; width: 30px;}
+#move-history li span.white-move { color: #ecf0f1; width: 60px;}
+#move-history li span.black-move { color: #e74c3c; width: 60px; text-align: right;}
